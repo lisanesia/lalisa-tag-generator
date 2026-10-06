@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LISA × LOUIS VUITTON — Caption Generator</title>
+<title>LISANESIA — LISA × Louis Vuitton</title>
 
 <style>
 *{
@@ -16,9 +16,9 @@ body{
   min-height:100vh;
   font-family:Arial,Helvetica,sans-serif;
   background:
-    radial-gradient(circle at 50% 0%,#292929 0%,#111 38%,#050505 75%);
+    radial-gradient(circle at 50% 0%,#292929 0%,#111 38%,#050505 78%);
   color:#f5f5f5;
-  padding:24px 16px 50px;
+  padding:20px 14px 45px;
 }
 
 .container{
@@ -29,57 +29,59 @@ body{
 
 .header{
   text-align:center;
-  padding:35px 10px 25px;
+  padding:35px 10px 28px;
 }
 
-.eyebrow{
+.brand{
   font-size:12px;
-  letter-spacing:4px;
-  color:#bcbcbc;
-  margin-bottom:14px;
+  letter-spacing:5px;
+  color:#aaa;
+  margin-bottom:16px;
+  font-weight:bold;
 }
 
 h1{
-  font-size:clamp(30px,7vw,58px);
+  font-size:clamp(36px,9vw,68px);
+  line-height:.95;
   letter-spacing:2px;
-  line-height:1;
-  font-weight:800;
+  font-weight:900;
 }
 
 .subtitle{
-  margin-top:14px;
+  margin-top:15px;
   color:#aaa;
-  font-size:14px;
-  letter-spacing:1px;
+  font-size:13px;
+  letter-spacing:2px;
 }
 
 .card{
-  background:rgba(20,20,20,.92);
-  border:1px solid #333;
+  background:rgba(18,18,18,.95);
+  border:1px solid #353535;
   border-radius:22px;
   padding:24px;
-  box-shadow:0 20px 60px rgba(0,0,0,.45);
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
 }
 
 label{
   display:block;
-  font-size:12px;
-  letter-spacing:1.5px;
   color:#aaa;
-  margin-bottom:8px;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1.5px;
   text-transform:uppercase;
+  margin-bottom:8px;
 }
 
 input,select{
   width:100%;
-  background:#0c0c0c;
-  color:white;
+  background:#090909;
+  color:#fff;
   border:1px solid #383838;
   border-radius:12px;
-  padding:14px 15px;
+  padding:14px;
+  margin-bottom:18px;
   font-size:15px;
   outline:none;
-  margin-bottom:18px;
 }
 
 input:focus,select:focus{
@@ -89,10 +91,9 @@ input:focus,select:focus{
 button{
   border:0;
   border-radius:12px;
-  padding:13px 18px;
-  font-size:14px;
-  font-weight:700;
+  padding:13px 17px;
   cursor:pointer;
+  font-weight:800;
   transition:.2s;
 }
 
@@ -103,22 +104,17 @@ button:hover{
 .generate{
   width:100%;
   background:#f2f2f2;
-  color:#080808;
+  color:#050505;
   padding:16px;
   font-size:15px;
-  margin-top:4px;
-}
-
-.generate:hover{
-  background:white;
 }
 
 .result{
-  margin-top:22px;
   display:none;
+  margin-top:24px;
 }
 
-.result-title{
+.result-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -126,43 +122,42 @@ button:hover{
   margin-bottom:10px;
 }
 
-.result-title h2{
-  font-size:16px;
-  letter-spacing:1px;
+.result-head h2{
+  font-size:14px;
+  letter-spacing:1.5px;
 }
 
-.copy{
+.small-btn{
   background:#242424;
-  color:white;
+  color:#fff;
   border:1px solid #444;
+  padding:10px 14px;
+  font-size:12px;
 }
 
-.caption-box{
-  background:#090909;
+.caption{
+  background:#080808;
   border:1px solid #333;
   border-radius:15px;
   padding:20px;
-  line-height:1.7;
   white-space:pre-line;
-  color:#eee;
+  line-height:1.75;
   font-size:15px;
+  color:#eee;
 }
 
 .tags{
-  margin-top:18px;
-  background:#090909;
+  background:#080808;
   border:1px solid #333;
   border-radius:15px;
   padding:18px;
-  color:#d7d7d7;
-  line-height:1.8;
+  line-height:2;
   font-size:14px;
 }
 
 .tag{
   display:inline-block;
-  margin:3px 4px 3px 0;
-  color:#fff;
+  margin-right:12px;
 }
 
 .actions{
@@ -175,27 +170,36 @@ button:hover{
   flex:1;
 }
 
-.shuffle{
+.another{
   background:#242424;
   color:#fff;
   border:1px solid #444;
 }
 
-.footer{
+.copyall{
+  background:#f2f2f2;
+  color:#050505;
+}
+
+.counter{
   text-align:center;
-  margin-top:25px;
-  color:#666;
+  margin-top:14px;
+  color:#777;
   font-size:11px;
   letter-spacing:1px;
 }
 
+.footer{
+  text-align:center;
+  margin-top:25px;
+  color:#555;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
 @media(max-width:600px){
   body{
-    padding:12px 10px 35px;
-  }
-
-  .header{
-    padding:28px 5px 20px;
+    padding:10px 9px 30px;
   }
 
   .card{
@@ -203,16 +207,11 @@ button:hover{
     border-radius:18px;
   }
 
-  .result-title{
-    align-items:flex-start;
+  .header{
+    padding:28px 5px 22px;
   }
 
-  .copy{
-    padding:10px 13px;
-    font-size:12px;
-  }
-
-  .caption-box{
+  .caption{
     font-size:14px;
   }
 }
@@ -223,212 +222,463 @@ button:hover{
 
 <div class="container">
 
-  <header class="header">
-    <div class="eyebrow">FOR LILIES • FASHION EVENT</div>
-    <h1>LISA × LV</h1>
-    <p class="subtitle">FASHION SHOW CAPTION GENERATOR</p>
-  </header>
+<header class="header">
+  <div class="brand">LISANESIA • FAN PROJECT</div>
+  <h1>LISA × LV</h1>
+  <p class="subtitle">FASHION SHOW CAPTION GENERATOR</p>
+</header>
 
-  <main class="card">
+<main class="card">
 
-    <label for="event">Fashion Event</label>
-    <input
-      id="event"
-      type="text"
-      value="Louis Vuitton Fashion Show"
-      placeholder="Example: Paris Fashion Week"
-    >
+<label>Fashion Event</label>
+<input
+  id="event"
+  value="Louis Vuitton Fashion Show"
+  placeholder="Example: Paris Fashion Week"
+>
 
-    <label for="keyword">Main Keyword</label>
-    <input
-      id="keyword"
-      type="text"
-      value="LISA"
-      placeholder="Example: LISA"
-    >
+<label>Main Keyword</label>
+<input
+  id="name"
+  value="LISA"
+  placeholder="Example: LISA"
+>
 
-    <label for="tone">Caption Style</label>
-    <select id="tone">
-      <option value="glam">Glamorous</option>
-      <option value="power">Powerful</option>
-      <option value="elegant">Elegant</option>
-      <option value="hype">Hype / Fan Support</option>
-      <option value="short">Short & Clean</option>
-    </select>
+<label>Caption Vibe</label>
+<select id="vibe">
+  <option value="luxury">Luxury & Elegant</option>
+  <option value="fashion">Fashion & Style</option>
+  <option value="power">Powerful & Iconic</option>
+  <option value="hype">Hype & Fan Support</option>
+  <option value="media">Media & Fashion Moment</option>
+  <option value="short">Short & Punchy</option>
+</select>
 
-    <button class="generate" onclick="generateCaption()">
-      ✨ GENERATE CAPTION
+<button class="generate" onclick="generate()">
+  ✨ GENERATE CAPTION
+</button>
+
+<section class="result" id="result">
+
+  <div class="result-head">
+    <h2>GENERATED CAPTION</h2>
+    <button class="small-btn" onclick="copyCaption()">COPY</button>
+  </div>
+
+  <div class="caption" id="caption"></div>
+
+  <div class="result-head" style="margin-top:22px;">
+    <h2>HASHTAGS</h2>
+    <button class="small-btn" onclick="copyTags()">COPY</button>
+  </div>
+
+  <div class="tags">
+    <span class="tag">#LISAxLVSS27</span>
+    <span class="tag">#LISAxLouisVuitton</span>
+  </div>
+
+  <div class="actions">
+    <button class="another" onclick="generate()">
+      🎲 ANOTHER CAPTION
     </button>
 
-    <section class="result" id="result">
+    <button class="copyall" onclick="copyAll()">
+      📋 COPY ALL
+    </button>
+  </div>
 
-      <div class="result-title">
-        <h2>GENERATED CAPTION</h2>
-        <button class="copy" onclick="copyCaption()">COPY</button>
-      </div>
+  <div class="counter" id="counter"></div>
 
-      <div class="caption-box" id="caption"></div>
+</section>
 
-      <div class="result-title" style="margin-top:22px;">
-        <h2>HASHTAGS</h2>
-        <button class="copy" onclick="copyTags()">COPY</button>
-      </div>
+</main>
 
-      <div class="tags" id="tags">
-        <span class="tag">#LISAxLVSS27</span>
-        <span class="tag">#LISAxLouisVuitton</span>
-      </div>
-
-      <div class="actions">
-        <button class="shuffle" onclick="generateCaption()">
-          🎲 ANOTHER CAPTION
-        </button>
-        <button class="generate" onclick="copyAll()">
-          📋 COPY ALL
-        </button>
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    LALISA MANOBAN • FAN-MADE PROJECT
-  </footer>
+<footer class="footer">
+  LALISA MANOBAN • LILIES • LISANESIA
+</footer>
 
 </div>
 
 <script>
 
-const captions = {
+/*
+====================================================
+LISA × LOUIS VUITTON
+500+ AUTOMATIC CAPTION COMBINATIONS
+====================================================
+*/
 
-glam: [
-"{name} is ready to steal the spotlight at {event}. ✨\n\nEvery step, every look, every moment — effortlessly iconic. {name} continues to prove that true star power needs no introduction.",
-"{name} brings her undeniable presence to {event}. ✨\n\nFrom the moment she arrives, all eyes are on her. A true fashion icon in the making.",
-"All eyes on {name} at {event}. 🖤\n\nEffortless elegance, confidence, and that unmistakable presence — she knows exactly how to own the moment.",
-"{name} once again turns a fashion moment into an unforgettable one. ✨\n\nHer style speaks for itself, and her presence says everything.",
-"Another fashion moment, another unforgettable appearance from {name}. 🖤\n\nGraceful, confident, and effortlessly captivating."
+const data = {
+
+luxury:{
+open:[
+"{name} arrives at {event} with effortless elegance.",
+"{name} steps into {event} with timeless sophistication.",
+"All eyes turn to {name} as she arrives at {event}.",
+"{name} brings an undeniable sense of elegance to {event}.",
+"Elegance takes center stage as {name} arrives at {event}.",
+"{name} makes her presence felt at {event}.",
+"At {event}, {name} once again proves the power of effortless style.",
+"{name} brings her signature presence to {event}.",
+"A new fashion moment begins with {name} at {event}.",
+"{name} turns her arrival at {event} into a moment to remember."
 ],
-
-power: [
-"{name} has arrived, and the spotlight follows. 🔥\n\nBringing confidence, charisma, and undeniable star power to {event}.",
-"{name} owns the moment at {event}. 🔥\n\nA powerful presence, an unforgettable look, and a fashion moment that deserves all the attention.",
-"Make way for {name}. 🖤\n\nShe steps into {event} with confidence and leaves a moment nobody will forget.",
-"{name} is commanding the spotlight at {event}. ✨\n\nConfidence looks good on her.",
-"One arrival. One unforgettable presence. One LISA. 🔥\n\nThe fashion world is watching as {name} steps into {event}."
+middle:[
+"Her confidence, presence, and refined style make every second unforgettable.",
+"Every detail comes together beautifully, creating a truly memorable fashion moment.",
+"She carries herself with the kind of confidence that naturally commands attention.",
+"Her presence speaks volumes without ever needing to try too hard.",
+"Graceful, confident, and effortlessly captivating from every angle.",
+"She continues to show why her presence belongs among the biggest names in fashion.",
+"Her ability to make a fashion moment feel completely effortless is unmatched.",
+"From her presence to her attitude, everything feels perfectly in place.",
+"She turns simplicity into something unforgettable.",
+"Another moment that proves why LISA continues to captivate the fashion world."
 ],
-
-elegant: [
-"{name} graces {event} with effortless elegance. ✨\n\nA timeless presence, a refined look, and a moment that speaks for itself.",
-"Elegance takes center stage as {name} arrives at {event}. 🖤\n\nEvery detail feels effortlessly beautiful.",
-"{name} brings a quiet confidence and timeless elegance to {event}. ✨\n\nSimply unforgettable.",
-"Grace, confidence, and effortless style — {name} makes every fashion moment her own.",
-"At {event}, {name} proves once again that elegance never goes out of style. ✨"
-],
-
-hype: [
-"LISA HAS ARRIVED! 🔥🔥\n\nLet’s show {name} all the love and support as she takes over {event}! 🖤",
-"THE MOMENT IS HERE! ✨\n\n{name} is at {event}, and we’re ready to celebrate every single fashion moment!",
-"Everyone say LISA! 🖤🔥\n\nLet’s give {name} the love she deserves as she shines at {event}!",
-"Another iconic moment for {name}! ✨\n\nLet’s make sure her presence at {event} gets all the love and attention!",
-"She’s here. She’s shining. She’s LISA. 🔥\n\nLet’s support {name} at {event} and celebrate this incredible fashion moment together!"
-],
-
-short: [
-"{name} at {event}. Effortlessly iconic. ✨",
-"All eyes on {name}. 🖤",
-"{name} owns the moment. ✨",
-"Simply LISA. Simply unforgettable. 🖤",
-"Fashion meets star power. {name} at {event}. ✨",
-"{name}. The moment. The icon. 🖤",
-"Another unforgettable fashion moment for {name}. ✨"
+close:[
+"Another unforgettable moment for LISA. ✨",
+"Simply iconic. Simply LISA. 🖤",
+"A fashion moment worth remembering. ✨",
+"Effortless. Elegant. Unforgettable.",
+"LISA and fashion — always a perfect combination.",
+"Another chapter in LISA's fashion journey. 🖤",
+"She makes every moment look effortless.",
+"An unforgettable presence from start to finish. ✨",
+"Fashion looks even better with LISA in the room.",
+"One more iconic moment for LISA."
 ]
+},
+
+fashion:{
+open:[
+"{name} is serving another unforgettable fashion moment at {event}.",
+"{name} steps into {event} and instantly owns the fashion spotlight.",
+"Fashion takes a new turn as {name} arrives at {event}.",
+"{name} brings her signature style to {event}.",
+"Another day, another iconic fashion moment for {name}.",
+"{name} proves once again that she knows how to make an entrance.",
+"The fashion spotlight belongs to {name} at {event}.",
+"{name} arrives at {event} looking effortlessly unforgettable.",
+"Another fashion scene, another moment made by {name}.",
+"{name} turns {event} into her own fashion moment."
+],
+middle:[
+"Her confidence and effortless styling make every detail stand out.",
+"She knows exactly how to turn a look into a statement.",
+"Every angle captures the confidence and personality she brings to fashion.",
+"Her presence transforms a simple appearance into a moment everyone remembers.",
+"She continues to redefine what it means to own a fashion moment.",
+"Her style, attitude, and confidence come together perfectly.",
+"Every detail feels intentional, effortless, and completely her.",
+"She makes fashion feel natural, powerful, and unforgettable.",
+"Her presence alone is enough to make the room stop and look.",
+"Once again, she proves that true style comes from confidence."
+],
+close:[
+"That's LISA energy. ✨",
+"She was made for moments like this. 🖤",
+"Fashion icon energy, always.",
+"Another look. Another statement. Another LISA moment.",
+"Absolutely unforgettable. ✨",
+"She owns the moment without even trying.",
+"LISA never misses a fashion moment.",
+"Iconic from every angle. 🖤",
+"Another moment added to LISA's fashion history.",
+"That's how you make an entrance."
+]
+},
+
+power:{
+open:[
+"{name} has arrived, and the spotlight follows.",
+"{name} walks into {event} with undeniable confidence.",
+"Make way for {name} at {event}.",
+"{name} is ready to own the moment at {event}.",
+"The moment belongs to {name}.",
+"{name} takes over the spotlight at {event}.",
+"One arrival. One unforgettable presence. One LISA.",
+"{name} brings serious star power to {event}.",
+"All eyes are on {name} at {event}.",
+"{name} steps forward and instantly commands the room."
+],
+middle:[
+"Her confidence is impossible to ignore.",
+"She carries the kind of presence that fills the entire room.",
+"Every step feels powerful, confident, and completely effortless.",
+"She doesn't chase the spotlight — the spotlight finds her.",
+"Her presence turns heads and creates a moment of its own.",
+"Confidence like this speaks louder than words.",
+"She continues to show exactly why her star power is undeniable.",
+"Every move carries the energy of someone who knows her worth.",
+"She owns every second of the moment.",
+"There's simply no looking away when LISA steps into the spotlight."
+],
+close:[
+"THE LISA EFFECT. 🔥",
+"Unmissable. Unforgettable. LISA.",
+"She owns the moment. Period.",
+"That's what star power looks like.",
+"LISA has entered the building. 🔥",
+"Another iconic takeover.",
+"The spotlight was made for moments like this.",
+"Power, confidence, presence.",
+"Nobody does it quite like LISA.",
+"Icon behavior. 🖤"
+]
+},
+
+hype:{
+open:[
+"LISA HAS ARRIVED! 🔥",
+"THE MOMENT IS HERE — LISA AT {event}!",
+"EVERYONE LOOK! LISA IS HERE!",
+"LET'S HEAR IT FOR LISA! 🖤",
+"LISA IS READY TO LIGHT UP {event}!",
+"THE SPOTLIGHT IS ON LISA!",
+"OUR GIRL LISA HAS ARRIVED! ✨",
+"IT'S LISA'S MOMENT!",
+"LISA JUST MADE HER ENTRANCE!",
+"THE QUEEN OF THE MOMENT HAS ARRIVED! 🔥"
+],
+middle:[
+"Let's give her all the love and support she deserves.",
+"Her presence is already making this fashion moment unforgettable.",
+"Every single look deserves to be celebrated.",
+"Let's make sure everyone sees this incredible moment.",
+"She continues to make us proud with every appearance.",
+"Her fashion presence is something truly special.",
+"Let's celebrate another incredible moment in LISA's journey.",
+"She deserves all the love for this unforgettable appearance.",
+"This is another moment worth talking about.",
+"Let's keep showing LISA how much we support her."
+],
+close:[
+"LET'S GO LILIES! 🖤",
+"SHOW LISA SOME LOVE! 🔥",
+"KEEP SUPPORTING LISA! ✨",
+"MAKE THIS MOMENT LOUD!",
+"LISA DESERVES ALL THE LOVE!",
+"LET'S CELEBRATE LISA TOGETHER!",
+"OUR SUPPORT NEVER STOPS.",
+"KEEP THE LOVE COMING FOR LISA!",
+"THIS IS LISA'S MOMENT!",
+"LET'S MAKE HER SHINE EVEN BRIGHTER!"
+]
+},
+
+media:{
+open:[
+"All eyes are on {name} as she arrives at {event}.",
+"{name} captures attention the moment she steps into {event}.",
+"{name} becomes one of the standout moments at {event}.",
+"Another major fashion appearance for {name} at {event}.",
+"{name} draws attention at {event} with her undeniable presence.",
+"The cameras turn toward {name} at {event}.",
+"{name} creates another memorable fashion moment at {event}.",
+"Fashion and star power meet as {name} arrives at {event}.",
+"{name} makes headlines with her appearance at {event}.",
+"Another unforgettable appearance from {name} at {event}."
+],
+middle:[
+"Her arrival quickly becomes a moment worth capturing from every angle.",
+"Photographers and fans alike can't take their eyes off her.",
+"Her presence brings an undeniable energy to the event.",
+"Every camera seems ready to capture another unforgettable moment.",
+"She effortlessly commands attention wherever she goes.",
+"Her appearance adds another memorable chapter to her fashion journey.",
+"Once again, her presence becomes part of the conversation.",
+"She proves that a great fashion moment can speak for itself.",
+"Her confidence makes every photograph feel instantly iconic.",
+"Another appearance that will be remembered long after the event."
+],
+close:[
+"Another unforgettable LISA moment. ✨",
+"Definitely a moment to remember.",
+"LISA continues to own the fashion spotlight.",
+"Iconic from the first camera flash to the last.",
+"Another fashion moment added to the archives.",
+"All eyes, all cameras, all LISA.",
+"An unforgettable appearance. 🖤",
+"Another standout moment for LISA.",
+"Fashion history in the making.",
+"One appearance, countless unforgettable moments."
+]
+},
+
+short:{
+open:[
+"{name} at {event}. Effortlessly iconic. ✨",
+"{name}. The moment. The icon.",
+"All eyes on {name}. 🖤",
+"{name} owns the spotlight.",
+"Simply LISA. Simply unforgettable.",
+"Fashion meets star power — {name}.",
+"{name} making another statement.",
+"Another day, another LISA moment.",
+"{name} understood the assignment.",
+"LISA has entered the spotlight. ✨"
+],
+middle:[
+"Confidence looks good on her.",
+"Effortless style. Unmatched presence.",
+"She makes it look easy.",
+"Nothing but pure star power.",
+"Every detail speaks for itself.",
+"Another unforgettable fashion moment.",
+"She owns every angle.",
+"Iconic energy, always.",
+"Confidence. Style. LISA.",
+"She was made for the spotlight."
+],
+close:[
+"🖤 LISA × LV",
+"✨ Unforgettable.",
+"Fashion icon behavior.",
+"Always a moment.",
+"Simply iconic.",
+"That's LISA.",
+"Effortlessly LISA.",
+"Another iconic chapter.",
+"She never misses.",
+"Pure LISA energy."
+]
+
+}
 
 };
 
-const hashtags = "#LISAxLVSS27 #LISAxLouisVuitton";
-
+let used = new Set();
 let currentCaption = "";
 
-function generateCaption(){
+const hashtags =
+"#LISAxLVSS27 #LISAxLouisVuitton";
+
+function randomItem(array){
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function createCaption(){
 
   const event =
     document.getElementById("event").value.trim()
     || "Louis Vuitton Fashion Show";
 
   const name =
-    document.getElementById("keyword").value.trim()
+    document.getElementById("name").value.trim()
     || "LISA";
 
-  const tone =
-    document.getElementById("tone").value;
+  const vibe =
+    document.getElementById("vibe").value;
 
-  const list = captions[tone];
+  const d = data[vibe];
 
-  const random =
-    list[Math.floor(Math.random() * list.length)];
+  let caption;
+  let attempts = 0;
 
-  currentCaption =
-    random
-    .replaceAll("{name}", name)
-    .replaceAll("{event}", event);
+  do{
+
+    const opening =
+      randomItem(d.open);
+
+    const middle =
+      randomItem(d.middle);
+
+    const closing =
+      randomItem(d.close);
+
+    caption =
+      opening
+      .replaceAll("{name}",name)
+      .replaceAll("{event}",event)
+      + "\n\n"
+      + middle
+      + "\n\n"
+      + closing;
+
+    attempts++;
+
+    /*
+    Safety net:
+    if every combination somehow gets used,
+    reset the current pool.
+    */
+    if(attempts > 100){
+      used.clear();
+      break;
+    }
+
+  }while(used.has(caption));
+
+  used.add(caption);
+
+  return caption;
+}
+
+function generate(){
+
+  currentCaption = createCaption();
 
   document.getElementById("caption").textContent =
     currentCaption;
 
   document.getElementById("result").style.display =
     "block";
+
+  document.getElementById("counter").textContent =
+    "CAPTION GENERATED • " + used.size + " USED";
+}
+
+function copyText(text){
+
+  if(navigator.clipboard){
+
+    navigator.clipboard.writeText(text)
+    .then(()=>{
+      alert("Berhasil dicopy! ✨");
+    })
+    .catch(()=>{
+      fallback(text);
+    });
+
+  }else{
+    fallback(text);
+  }
+}
+
+function fallback(text){
+
+  const area =
+    document.createElement("textarea");
+
+  area.value = text;
+
+  document.body.appendChild(area);
+
+  area.select();
+
+  document.execCommand("copy");
+
+  area.remove();
+
+  alert("Berhasil dicopy! ✨");
 }
 
 function copyCaption(){
-
-  navigator.clipboard.writeText(currentCaption)
-    .then(()=>{
-      alert("Caption berhasil dicopy! ✨");
-    })
-    .catch(()=>{
-      fallbackCopy(currentCaption);
-    });
+  copyText(currentCaption);
 }
 
 function copyTags(){
-
-  navigator.clipboard.writeText(hashtags)
-    .then(()=>{
-      alert("Hashtag berhasil dicopy!");
-    })
-    .catch(()=>{
-      fallbackCopy(hashtags);
-    });
+  copyText(hashtags);
 }
 
 function copyAll(){
 
-  const all =
-    currentCaption + "\n\n" + hashtags;
+  copyText(
+    currentCaption
+    + "\n\n"
+    + hashtags
+  );
 
-  navigator.clipboard.writeText(all)
-    .then(()=>{
-      alert("Caption + hashtag berhasil dicopy! ✨");
-    })
-    .catch(()=>{
-      fallbackCopy(all);
-    });
-}
-
-function fallbackCopy(text){
-
-  const textarea =
-    document.createElement("textarea");
-
-  textarea.value = text;
-
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  textarea.remove();
-
-  alert("Berhasil dicopy! ✨");
 }
 
 </script>
