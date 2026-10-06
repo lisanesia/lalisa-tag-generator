@@ -34,4 +34,240 @@ button{border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:poi
 .top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:15px}
 .top h2{font-size:18px;margin:0}
 .actions{display:flex;gap:6px}
-.stats{display:flex;gap:7px;margin-bottom:15
+.stats{display:flex;gap:7px;margin-bottom:15px}
+.badge{font-size:12px;color:#aaa7b2;background:#09090d;border:1px solid #292932;padding:7px 10px;border-radius:20px}
+.badge b{color:white}
+.tags{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tag{
+display:flex;align-items:center;justify-content:space-between;
+gap:8px;background:#09090d;border:1px solid #282831;border-radius:11px;padding:10px
+}
+.tag span{font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.copy{padding:6px 8px;background:#202027;color:#ddd;font-size:10px}
+.empty{grid-column:1/-1;text-align:center;color:#aaa;padding:45px 10px;border:1px dashed #34343e;border-radius:12px}
+.footer{text-align:center;color:#666;font-size:11px;padding:18px}
+@media(max-width:750px){
+.grid{grid-template-columns:1fr}
+.tags{grid-template-columns:1fr}
+.hero{padding:28px 20px}
+.box{padding:17px}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<section class="hero">
+<div class="small">FOR LILIES • LALISA MANOBAN</div>
+<h1>LALISA<br>TAG GENERATOR</h1>
+<div class="desc">
+Bikin kumpulan hashtag campaign Lisa dengan cepat.
+Pilih preset, tambahkan keyword sendiri, lalu copy semua hashtag.
+</div>
+</section>
+
+<div class="grid">
+
+<section class="box">
+
+<label>Campaign / Event</label>
+<input id="campaign" value="Lisa">
+
+<label>Main Keyword</label>
+<input id="keyword" value="LISA">
+
+<label>Custom Tags</label>
+<input id="custom" placeholder="#LISA #LALISA">
+
+<label>Jumlah Tag</label>
+<select id="count">
+<option value="10">10 Tags</option>
+<option value="20" selected>20 Tags</option>
+<option value="30">30 Tags</option>
+<option value="40">40 Tags</option>
+</select>
+
+<label>Preset</label>
+<div class="presets">
+<button class="preset" onclick="preset('general')">General</button>
+<button class="preset" onclick="preset('stream')">Streaming</button>
+<button class="preset" onclick="preset('vote')">Voting</button>
+<button class="preset" onclick="preset('award')">Award</button>
+<button class="preset" onclick="preset('fashion')">Fashion</button>
+<button class="preset" onclick="preset('solo')">Solo</button>
+</div>
+
+<button class="generate" onclick="generate()">✦ GENERATE TAGS</button>
+
+</section>
+
+<section class="box">
+
+<div class="top">
+<h2>Generated Tags</h2>
+<div class="actions">
+<button class="secondary" onclick="shuffle()">↻</button>
+<button class="secondary" onclick="copyAll()">COPY ALL</button>
+</div>
+</div>
+
+<div class="stats">
+<div class="badge">Tags <b id="num">0</b></div>
+<div class="badge">Characters <b id="chars">0</b></div>
+</div>
+
+<div id="result" class="tags">
+<div class="empty">Klik GENERATE TAGS untuk mulai.</div>
+</div>
+
+</section>
+
+</div>
+
+<div class="footer">
+LALISA TAG GENERATOR • Fan-made tool
+</div>
+
+</div>
+
+<script>
+const data={
+general:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAUPDATE",
+"#LISAFANS","#TEAMLISA","#LISAFOREVER","#LISASUPPORT","#LISAWORLD"
+],
+stream:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#STREAMLISA",
+"#STREAMLALISA","#LISASTREAMING","#LISAMUSIC","#LISASOLO","#LISASUPPORT"
+],
+vote:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#VOTELISA",
+"#VOTELALISA","#LISAVOTE","#SUPPORTLISA","#LILIESVOTE","#LISAFOR"
+],
+award:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAAWARD",
+"#LISAWINS","#LISANOMINATED","#LISAONSTAGE","#LISAEVENT","#LISAFOR"
+],
+fashion:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAFASHION",
+"#LISASTYLE","#LISALOOK","#LISAINFASHION","#LISAEVENT","#LISAGLOBAL"
+],
+solo:[
+"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISASOLO",
+"#LISAMUSIC","#LISASOLOIST","#LISAARTIST","#LISAVOCALS","#LISAPERFORMER"
+]
+};
+
+let tags=[];
+
+function norm(x){
+x=x.trim();
+if(!x)return "";
+return x[0]=="#" ? x : "#"+x.replace(/\s+/g,"");
+}
+
+function preset(type){
+document.getElementById("keyword").value="LISA";
+document.getElementById("campaign").value=
+type=="stream"?"Lisa Streaming":
+type=="vote"?"Lisa Voting":
+type=="award"?"Lisa Award":
+type=="fashion"?"Lisa Fashion":
+type=="solo"?"Lisa Solo":"Lisa";
+tags=[...data[type]];
+render();
+}
+
+function generate(){
+
+let key=norm(document.getElementById("keyword").value);
+let custom=document.getElementById("custom").value
+.split(/[\s,]+/).map(norm).filter(Boolean);
+
+let campaign=norm(
+document.getElementById("campaign").value.replace(/[^a-zA-Z0-9]/g,"")
+);
+
+let pool=[
+key,
+"#LISA",
+"#LALISA",
+"#LISAMANOBAN",
+"#LILIES",
+"#LISAUPDATE",
+"#LISAFANS",
+"#TEAMLISA",
+"#LISAFOREVER",
+"#LISASUPPORT",
+campaign,
+...custom
+];
+
+pool=[...new Set(pool.filter(Boolean))];
+
+let n=Number(document.getElementById("count").value);
+tags=pool.slice(0,n);
+
+render();
+}
+
+function render(){
+
+let box=document.getElementById("result");
+
+if(!tags.length){
+box.innerHTML='<div class="empty">Belum ada tag.</div>';
+return;
+}
+
+box.innerHTML=tags.map((x,i)=>`
+<div class="tag">
+<span>${x}</span>
+<button class="copy" onclick="copyOne(${i})">COPY</button>
+</div>
+`).join("");
+
+document.getElementById("num").textContent=tags.length;
+document.getElementById("chars").textContent=tags.join(" ").length;
+}
+
+function fallback(text){
+let t=document.createElement("textarea");
+t.value=text;
+document.body.appendChild(t);
+t.select();
+document.execCommand("copy");
+t.remove();
+alert("Berhasil dicopy!");
+}
+
+function copyOne(i){
+let text=tags[i];
+if(navigator.clipboard){
+navigator.clipboard.writeText(text)
+.then(()=>alert("Tag berhasil dicopy!"))
+.catch(()=>fallback(text));
+}else fallback(text);
+}
+
+function copyAll(){
+if(!tags.length)return;
+let text=tags.join(" ");
+if(navigator.clipboard){
+navigator.clipboard.writeText(text)
+.then(()=>alert("Semua tag berhasil dicopy!"))
+.catch(()=>fallback(text));
+}else fallback(text);
+}
+
+function shuffle(){
+tags.sort(()=>Math.random()-.5);
+render();
+}
+
+generate();
+</script>
+
+</body>
+</html>
