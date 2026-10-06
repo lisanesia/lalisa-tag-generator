@@ -1,272 +1,436 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LALISA TAG GENERATOR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LISA × LOUIS VUITTON — Caption Generator</title>
+
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 body{
-margin:0;background:#08080b;color:#fff;font-family:Arial,sans-serif;
-background-image:radial-gradient(circle at 10% 0,#30263b,transparent 35%),radial-gradient(circle at 100% 0,#332817,transparent 30%)
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 50% 0%,#292929 0%,#111 38%,#050505 75%);
+  color:#f5f5f5;
+  padding:24px 16px 50px;
 }
-.wrap{max-width:1000px;margin:auto;padding:20px}
-.hero,.box{
-background:#111117dd;border:1px solid #292932;border-radius:24px;
-box-shadow:0 20px 60px #0008
+
+.container{
+  width:100%;
+  max-width:850px;
+  margin:auto;
 }
-.hero{padding:35px 25px;margin-bottom:18px}
-.small{color:#d8c27f;font-size:12px;font-weight:bold;letter-spacing:3px}
-h1{font-size:clamp(38px,8vw,70px);line-height:.9;margin:12px 0;letter-spacing:-4px}
-.desc{color:#aaa7b2;line-height:1.5;max-width:650px}
-.grid{display:grid;grid-template-columns:320px 1fr;gap:18px}
-.box{padding:20px}
-label{display:block;font-size:11px;font-weight:bold;color:#ccc;margin:0 0 7px;text-transform:uppercase;letter-spacing:1px}
+
+.header{
+  text-align:center;
+  padding:35px 10px 25px;
+}
+
+.eyebrow{
+  font-size:12px;
+  letter-spacing:4px;
+  color:#bcbcbc;
+  margin-bottom:14px;
+}
+
+h1{
+  font-size:clamp(30px,7vw,58px);
+  letter-spacing:2px;
+  line-height:1;
+  font-weight:800;
+}
+
+.subtitle{
+  margin-top:14px;
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.card{
+  background:rgba(20,20,20,.92);
+  border:1px solid #333;
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+label{
+  display:block;
+  font-size:12px;
+  letter-spacing:1.5px;
+  color:#aaa;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+
 input,select{
-width:100%;padding:13px;margin-bottom:15px;border-radius:11px;
-border:1px solid #292932;background:#09090d;color:white;outline:0
+  width:100%;
+  background:#0c0c0c;
+  color:white;
+  border:1px solid #383838;
+  border-radius:12px;
+  padding:14px 15px;
+  font-size:15px;
+  outline:none;
+  margin-bottom:18px;
 }
-input:focus,select:focus{border-color:#b7a4ff}
-.presets{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}
-button{border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer}
-.preset,.secondary{background:#202027;color:#eee;border:1px solid #34343e}
-.generate{width:100%;background:linear-gradient(100deg,#d8c27f,#f1e3b0);color:#111}
-.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:15px}
-.top h2{font-size:18px;margin:0}
-.actions{display:flex;gap:6px}
-.stats{display:flex;gap:7px;margin-bottom:15px}
-.badge{font-size:12px;color:#aaa7b2;background:#09090d;border:1px solid #292932;padding:7px 10px;border-radius:20px}
-.badge b{color:white}
-.tags{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+input:focus,select:focus{
+  border-color:#aaa;
+}
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:13px 18px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{
+  transform:translateY(-1px);
+}
+
+.generate{
+  width:100%;
+  background:#f2f2f2;
+  color:#080808;
+  padding:16px;
+  font-size:15px;
+  margin-top:4px;
+}
+
+.generate:hover{
+  background:white;
+}
+
+.result{
+  margin-top:22px;
+  display:none;
+}
+
+.result-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.result-title h2{
+  font-size:16px;
+  letter-spacing:1px;
+}
+
+.copy{
+  background:#242424;
+  color:white;
+  border:1px solid #444;
+}
+
+.caption-box{
+  background:#090909;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:20px;
+  line-height:1.7;
+  white-space:pre-line;
+  color:#eee;
+  font-size:15px;
+}
+
+.tags{
+  margin-top:18px;
+  background:#090909;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:18px;
+  color:#d7d7d7;
+  line-height:1.8;
+  font-size:14px;
+}
+
 .tag{
-display:flex;align-items:center;justify-content:space-between;
-gap:8px;background:#09090d;border:1px solid #282831;border-radius:11px;padding:10px
+  display:inline-block;
+  margin:3px 4px 3px 0;
+  color:#fff;
 }
-.tag span{font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.copy{padding:6px 8px;background:#202027;color:#ddd;font-size:10px}
-.empty{grid-column:1/-1;text-align:center;color:#aaa;padding:45px 10px;border:1px dashed #34343e;border-radius:12px}
-.footer{text-align:center;color:#666;font-size:11px;padding:18px}
-@media(max-width:750px){
-.grid{grid-template-columns:1fr}
-.tags{grid-template-columns:1fr}
-.hero{padding:28px 20px}
-.box{padding:17px}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.actions button{
+  flex:1;
+}
+
+.shuffle{
+  background:#242424;
+  color:#fff;
+  border:1px solid #444;
+}
+
+.footer{
+  text-align:center;
+  margin-top:25px;
+  color:#666;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+@media(max-width:600px){
+  body{
+    padding:12px 10px 35px;
+  }
+
+  .header{
+    padding:28px 5px 20px;
+  }
+
+  .card{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .result-title{
+    align-items:flex-start;
+  }
+
+  .copy{
+    padding:10px 13px;
+    font-size:12px;
+  }
+
+  .caption-box{
+    font-size:14px;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<section class="hero">
-<div class="small">FOR LILIES • LALISA MANOBAN</div>
-<h1>LALISA<br>TAG GENERATOR</h1>
-<div class="desc">
-Bikin kumpulan hashtag campaign Lisa dengan cepat.
-Pilih preset, tambahkan keyword sendiri, lalu copy semua hashtag.
-</div>
-</section>
+<div class="container">
 
-<div class="grid">
+  <header class="header">
+    <div class="eyebrow">FOR LILIES • FASHION EVENT</div>
+    <h1>LISA × LV</h1>
+    <p class="subtitle">FASHION SHOW CAPTION GENERATOR</p>
+  </header>
 
-<section class="box">
+  <main class="card">
 
-<label>Campaign / Event</label>
-<input id="campaign" value="Lisa">
+    <label for="event">Fashion Event</label>
+    <input
+      id="event"
+      type="text"
+      value="Louis Vuitton Fashion Show"
+      placeholder="Example: Paris Fashion Week"
+    >
 
-<label>Main Keyword</label>
-<input id="keyword" value="LISA">
+    <label for="keyword">Main Keyword</label>
+    <input
+      id="keyword"
+      type="text"
+      value="LISA"
+      placeholder="Example: LISA"
+    >
 
-<label>Custom Tags</label>
-<input id="custom" placeholder="#LISA #LALISA">
+    <label for="tone">Caption Style</label>
+    <select id="tone">
+      <option value="glam">Glamorous</option>
+      <option value="power">Powerful</option>
+      <option value="elegant">Elegant</option>
+      <option value="hype">Hype / Fan Support</option>
+      <option value="short">Short & Clean</option>
+    </select>
 
-<label>Jumlah Tag</label>
-<select id="count">
-<option value="10">10 Tags</option>
-<option value="20" selected>20 Tags</option>
-<option value="30">30 Tags</option>
-<option value="40">40 Tags</option>
-</select>
+    <button class="generate" onclick="generateCaption()">
+      ✨ GENERATE CAPTION
+    </button>
 
-<label>Preset</label>
-<div class="presets">
-<button class="preset" onclick="preset('general')">General</button>
-<button class="preset" onclick="preset('stream')">Streaming</button>
-<button class="preset" onclick="preset('vote')">Voting</button>
-<button class="preset" onclick="preset('award')">Award</button>
-<button class="preset" onclick="preset('fashion')">Fashion</button>
-<button class="preset" onclick="preset('solo')">Solo</button>
-</div>
+    <section class="result" id="result">
 
-<button class="generate" onclick="generate()">✦ GENERATE TAGS</button>
+      <div class="result-title">
+        <h2>GENERATED CAPTION</h2>
+        <button class="copy" onclick="copyCaption()">COPY</button>
+      </div>
 
-</section>
+      <div class="caption-box" id="caption"></div>
 
-<section class="box">
+      <div class="result-title" style="margin-top:22px;">
+        <h2>HASHTAGS</h2>
+        <button class="copy" onclick="copyTags()">COPY</button>
+      </div>
 
-<div class="top">
-<h2>Generated Tags</h2>
-<div class="actions">
-<button class="secondary" onclick="shuffle()">↻</button>
-<button class="secondary" onclick="copyAll()">COPY ALL</button>
-</div>
-</div>
+      <div class="tags" id="tags">
+        <span class="tag">#LISAxLVSS27</span>
+        <span class="tag">#LISAxLouisVuitton</span>
+      </div>
 
-<div class="stats">
-<div class="badge">Tags <b id="num">0</b></div>
-<div class="badge">Characters <b id="chars">0</b></div>
-</div>
+      <div class="actions">
+        <button class="shuffle" onclick="generateCaption()">
+          🎲 ANOTHER CAPTION
+        </button>
+        <button class="generate" onclick="copyAll()">
+          📋 COPY ALL
+        </button>
+      </div>
 
-<div id="result" class="tags">
-<div class="empty">Klik GENERATE TAGS untuk mulai.</div>
-</div>
+    </section>
 
-</section>
+  </main>
 
-</div>
-
-<div class="footer">
-LALISA TAG GENERATOR • Fan-made tool
-</div>
+  <footer class="footer">
+    LALISA MANOBAN • FAN-MADE PROJECT
+  </footer>
 
 </div>
 
 <script>
-const data={
-general:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAUPDATE",
-"#LISAFANS","#TEAMLISA","#LISAFOREVER","#LISASUPPORT","#LISAWORLD"
+
+const captions = {
+
+glam: [
+"{name} is ready to steal the spotlight at {event}. ✨\n\nEvery step, every look, every moment — effortlessly iconic. {name} continues to prove that true star power needs no introduction.",
+"{name} brings her undeniable presence to {event}. ✨\n\nFrom the moment she arrives, all eyes are on her. A true fashion icon in the making.",
+"All eyes on {name} at {event}. 🖤\n\nEffortless elegance, confidence, and that unmistakable presence — she knows exactly how to own the moment.",
+"{name} once again turns a fashion moment into an unforgettable one. ✨\n\nHer style speaks for itself, and her presence says everything.",
+"Another fashion moment, another unforgettable appearance from {name}. 🖤\n\nGraceful, confident, and effortlessly captivating."
 ],
-stream:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#STREAMLISA",
-"#STREAMLALISA","#LISASTREAMING","#LISAMUSIC","#LISASOLO","#LISASUPPORT"
+
+power: [
+"{name} has arrived, and the spotlight follows. 🔥\n\nBringing confidence, charisma, and undeniable star power to {event}.",
+"{name} owns the moment at {event}. 🔥\n\nA powerful presence, an unforgettable look, and a fashion moment that deserves all the attention.",
+"Make way for {name}. 🖤\n\nShe steps into {event} with confidence and leaves a moment nobody will forget.",
+"{name} is commanding the spotlight at {event}. ✨\n\nConfidence looks good on her.",
+"One arrival. One unforgettable presence. One LISA. 🔥\n\nThe fashion world is watching as {name} steps into {event}."
 ],
-vote:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#VOTELISA",
-"#VOTELALISA","#LISAVOTE","#SUPPORTLISA","#LILIESVOTE","#LISAFOR"
+
+elegant: [
+"{name} graces {event} with effortless elegance. ✨\n\nA timeless presence, a refined look, and a moment that speaks for itself.",
+"Elegance takes center stage as {name} arrives at {event}. 🖤\n\nEvery detail feels effortlessly beautiful.",
+"{name} brings a quiet confidence and timeless elegance to {event}. ✨\n\nSimply unforgettable.",
+"Grace, confidence, and effortless style — {name} makes every fashion moment her own.",
+"At {event}, {name} proves once again that elegance never goes out of style. ✨"
 ],
-award:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAAWARD",
-"#LISAWINS","#LISANOMINATED","#LISAONSTAGE","#LISAEVENT","#LISAFOR"
+
+hype: [
+"LISA HAS ARRIVED! 🔥🔥\n\nLet’s show {name} all the love and support as she takes over {event}! 🖤",
+"THE MOMENT IS HERE! ✨\n\n{name} is at {event}, and we’re ready to celebrate every single fashion moment!",
+"Everyone say LISA! 🖤🔥\n\nLet’s give {name} the love she deserves as she shines at {event}!",
+"Another iconic moment for {name}! ✨\n\nLet’s make sure her presence at {event} gets all the love and attention!",
+"She’s here. She’s shining. She’s LISA. 🔥\n\nLet’s support {name} at {event} and celebrate this incredible fashion moment together!"
 ],
-fashion:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISAFASHION",
-"#LISASTYLE","#LISALOOK","#LISAINFASHION","#LISAEVENT","#LISAGLOBAL"
-],
-solo:[
-"#LISA","#LALISA","#LISAMANOBAN","#LILIES","#LISASOLO",
-"#LISAMUSIC","#LISASOLOIST","#LISAARTIST","#LISAVOCALS","#LISAPERFORMER"
+
+short: [
+"{name} at {event}. Effortlessly iconic. ✨",
+"All eyes on {name}. 🖤",
+"{name} owns the moment. ✨",
+"Simply LISA. Simply unforgettable. 🖤",
+"Fashion meets star power. {name} at {event}. ✨",
+"{name}. The moment. The icon. 🖤",
+"Another unforgettable fashion moment for {name}. ✨"
 ]
+
 };
 
-let tags=[];
+const hashtags = "#LISAxLVSS27 #LISAxLouisVuitton";
 
-function norm(x){
-x=x.trim();
-if(!x)return "";
-return x[0]=="#" ? x : "#"+x.replace(/\s+/g,"");
+let currentCaption = "";
+
+function generateCaption(){
+
+  const event =
+    document.getElementById("event").value.trim()
+    || "Louis Vuitton Fashion Show";
+
+  const name =
+    document.getElementById("keyword").value.trim()
+    || "LISA";
+
+  const tone =
+    document.getElementById("tone").value;
+
+  const list = captions[tone];
+
+  const random =
+    list[Math.floor(Math.random() * list.length)];
+
+  currentCaption =
+    random
+    .replaceAll("{name}", name)
+    .replaceAll("{event}", event);
+
+  document.getElementById("caption").textContent =
+    currentCaption;
+
+  document.getElementById("result").style.display =
+    "block";
 }
 
-function preset(type){
-document.getElementById("keyword").value="LISA";
-document.getElementById("campaign").value=
-type=="stream"?"Lisa Streaming":
-type=="vote"?"Lisa Voting":
-type=="award"?"Lisa Award":
-type=="fashion"?"Lisa Fashion":
-type=="solo"?"Lisa Solo":"Lisa";
-tags=[...data[type]];
-render();
+function copyCaption(){
+
+  navigator.clipboard.writeText(currentCaption)
+    .then(()=>{
+      alert("Caption berhasil dicopy! ✨");
+    })
+    .catch(()=>{
+      fallbackCopy(currentCaption);
+    });
 }
 
-function generate(){
+function copyTags(){
 
-let key=norm(document.getElementById("keyword").value);
-let custom=document.getElementById("custom").value
-.split(/[\s,]+/).map(norm).filter(Boolean);
-
-let campaign=norm(
-document.getElementById("campaign").value.replace(/[^a-zA-Z0-9]/g,"")
-);
-
-let pool=[
-key,
-"#LISA",
-"#LALISA",
-"#LISAMANOBAN",
-"#LILIES",
-"#LISAUPDATE",
-"#LISAFANS",
-"#TEAMLISA",
-"#LISAFOREVER",
-"#LISASUPPORT",
-campaign,
-...custom
-];
-
-pool=[...new Set(pool.filter(Boolean))];
-
-let n=Number(document.getElementById("count").value);
-tags=pool.slice(0,n);
-
-render();
-}
-
-function render(){
-
-let box=document.getElementById("result");
-
-if(!tags.length){
-box.innerHTML='<div class="empty">Belum ada tag.</div>';
-return;
-}
-
-box.innerHTML=tags.map((x,i)=>`
-<div class="tag">
-<span>${x}</span>
-<button class="copy" onclick="copyOne(${i})">COPY</button>
-</div>
-`).join("");
-
-document.getElementById("num").textContent=tags.length;
-document.getElementById("chars").textContent=tags.join(" ").length;
-}
-
-function fallback(text){
-let t=document.createElement("textarea");
-t.value=text;
-document.body.appendChild(t);
-t.select();
-document.execCommand("copy");
-t.remove();
-alert("Berhasil dicopy!");
-}
-
-function copyOne(i){
-let text=tags[i];
-if(navigator.clipboard){
-navigator.clipboard.writeText(text)
-.then(()=>alert("Tag berhasil dicopy!"))
-.catch(()=>fallback(text));
-}else fallback(text);
+  navigator.clipboard.writeText(hashtags)
+    .then(()=>{
+      alert("Hashtag berhasil dicopy!");
+    })
+    .catch(()=>{
+      fallbackCopy(hashtags);
+    });
 }
 
 function copyAll(){
-if(!tags.length)return;
-let text=tags.join(" ");
-if(navigator.clipboard){
-navigator.clipboard.writeText(text)
-.then(()=>alert("Semua tag berhasil dicopy!"))
-.catch(()=>fallback(text));
-}else fallback(text);
+
+  const all =
+    currentCaption + "\n\n" + hashtags;
+
+  navigator.clipboard.writeText(all)
+    .then(()=>{
+      alert("Caption + hashtag berhasil dicopy! ✨");
+    })
+    .catch(()=>{
+      fallbackCopy(all);
+    });
 }
 
-function shuffle(){
-tags.sort(()=>Math.random()-.5);
-render();
+function fallbackCopy(text){
+
+  const textarea =
+    document.createElement("textarea");
+
+  textarea.value = text;
+
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+
+  alert("Berhasil dicopy! ✨");
 }
 
-generate();
 </script>
 
 </body>
